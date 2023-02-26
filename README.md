@@ -11,6 +11,12 @@ You can configure data source url by setting a custom value in '\src\main\resour
 ## BUILD
     mvn package
 
+## TEST
+You can manually run tests with command:
+
+    .\mvnw test
+
+
 ## RUNNING
 To start the application on default Tomcat server, run the following command in a command prompt:
 

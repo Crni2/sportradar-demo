@@ -1,6 +1,7 @@
 package si.exampleapi.object;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class MatchRet {
     private String tournamentName;
@@ -20,7 +21,7 @@ public class MatchRet {
         this.tournamentName = tournament.getName();
         this.sportName = sport.getName();
         this.startTime = match.getStart_time();
-        if(match.getStatus() != null) {
+        if (match.getStatus() != null) {
             this.status = match.getStatus().name();
         }
         this.homeTeam = match.getHome_team();
@@ -105,6 +106,25 @@ public class MatchRet {
                 ", homeScore='" + getHomeScore() + "'" +
                 ", awayScore='" + getAwayScore() + "'" +
                 "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof MatchRet)) {
+            return false;
+        }
+        MatchRet matchRet = (MatchRet) o;
+        return Objects.equals(tournamentName, matchRet.tournamentName) && Objects.equals(sportName, matchRet.sportName)
+                && Objects.equals(startTime, matchRet.startTime) && Objects.equals(status, matchRet.status)
+                && Objects.equals(homeTeam, matchRet.homeTeam) && Objects.equals(awayTeam, matchRet.awayTeam)
+                && Objects.equals(homeScore, matchRet.homeScore) && Objects.equals(awayScore, matchRet.awayScore);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tournamentName, sportName, startTime, status, homeTeam, awayTeam, homeScore, awayScore);
     }
 
 }
